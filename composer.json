@@ -18,6 +18,11 @@
   "scripts": {
     "lint": "php-cs-fixer fix --dry-run",
     "analyse": "phpstan analyse",
-    "test": "phpunit"
+    "test": "phpunit",
+    "check": [
+      "@lint",
+      "@analyse",
+      "@test"
+    ]
   }
 }
