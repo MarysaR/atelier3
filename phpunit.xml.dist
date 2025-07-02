@@ -9,13 +9,11 @@
         </testsuite>
     </testsuites>
 
-    <coverage>
-        <filter>
-            <whitelist processUncoveredFiles="true">
-                <directory suffix=".php">src</directory>
-            </whitelist>
-        </filter>
-    </coverage>
+    <filter processUncoveredFiles="true">
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
 
     <logging>
         <log type="coverage-html" target="build/coverage"/>
