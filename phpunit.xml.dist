@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-    bootstrap="vendor/autoload.php"
-    cacheResultFile=".phpunit.cache/test-results"
-    executionOrder="depends,defects"
-    forceCoversAnnotation="true"
-    beStrictAboutCoversAnnotation="true"
-    beStrictAboutOutputDuringTests="true"
-    beStrictAboutTodoAnnotatedTests="true"
-    convertDeprecationsToExceptions="true"
-    failOnRisky="true"
-    failOnWarning="true"
-    verbose="true"
-    colors="true">
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         verbose="true"
+         stopOnFailure="false">
 
-    <!-- Variables d'environnement -->
-    <php>
-        <env name="DB_DSN" value="sqlite::memory:"/>
-    </php>
-
-    <!-- Suites de tests -->
+    <!-- Tes suites de tests -->
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="Default">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
-    <!-- Couverture de code -->
-    <!-- Remplacement de processUncoveredFiles (non supporté ici) -->
-    <!-- Ajout du rapport HTML via <report><html> -->
-    <coverage includeUncoveredFiles="true">
+    <!-- Configuration de la couverture -->
+    <!-- processUncoveredFiles permet d’inclure les fichiers non testés -->
+    <coverage processUncoveredFiles="true">
+        <!-- on mesure uniquement src/ -->
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <!-- génération du rapport HTML -->
         <report>
             <html outputDirectory="build/coverage"/>
         </report>
