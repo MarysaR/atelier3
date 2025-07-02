@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         colors="true"
-         verbose="true"
-         stopOnFailure="false">
+<phpunit
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    verbose="true"
+    stopOnFailure="false">
 
-    <!-- Tes suites de tests -->
+    <!-- 1. On définit le répertoire de ton code applicatif -->
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
+
+    <!-- 2. Ta suite de tests -->
     <testsuites>
         <testsuite name="Default">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
-    <!-- Configuration de la couverture -->
-    <!-- processUncoveredFiles permet d’inclure les fichiers non testés -->
-    <coverage processUncoveredFiles="true">
-        <!-- on mesure uniquement src/ -->
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-        <!-- génération du rapport HTML -->
+    <!-- 3. Configuration de la couverture -->
+    <coverage includeUncoveredFiles="true">
         <report>
             <html outputDirectory="build/coverage"/>
         </report>
